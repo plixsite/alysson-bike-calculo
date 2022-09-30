@@ -16,7 +16,7 @@ function parcela(p, n, iof, seguroPrestamista){
     if ( Number.isNaN(p) )
     	p=0;
 
-    var pmt = p * ( (i * pow((1+i),n)) / (pow ((1+i),n) - 1) );
+    var pmt = p * ( (i *  Math.pow((1+i),n)) / ( Math.pow ((1+i),n) - 1) );
     /*
     Onde:
     pmt = prestacao,
@@ -40,7 +40,7 @@ function montante(p, n, iof, seguroPrestamista){
     if ( Number.isNaN(p) )
     	p=0;
         
-    var pmt = p * ( (i * pow((1+i),n)) / (pow ((1+i),n) - 1) );
+    var pmt =  p * ( (i *  Math.pow((1+i),n)) / ( Math.pow ((1+i),n) - 1) );
     /*
     Onde:
     pmt = prestacao,
@@ -79,7 +79,6 @@ $(document).ready(function(){
 
 <p>A partir de 48 x <span id="parcela"></span> = <span id="montante"></span> .</p>
 
-<a href="https://www.arquivodecodigos.com.br/dicas/1177-javascript-calculando-juros-simples-e-montante-usando-javascript.html" target="_blank">Cálculo de juros</a>
 
 </body>
 </html>
