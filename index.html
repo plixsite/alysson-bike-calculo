@@ -5,6 +5,9 @@
 
 <script>
 
+
+	
+	
 function parcela(p, n, iof, seguroPrestamista){
 
     var p = parseFloat(p);
@@ -13,23 +16,20 @@ function parcela(p, n, iof, seguroPrestamista){
     if ( Number.isNaN(p) )
     	p=0;
 
-	var j = p * i * n;
-	var m = p * (1 + (i * n));
-
-	/*
-    Onde: 
-    m = montante
-	j = juros
-	p = principal (capital)
-	i = taxa de juros
-	n = número de períodos    
+    var pmt = p * ( (i * pow((1+i),n)) / (pow ((1+i),n) - 1) );
+    /*
+    Onde:
+    pmt = prestacao,
+    p  = valor financiado
+    i   = taxa mensal / 100
+    n    = numero de meses
     */
-   
+	
     //com R$
-	return (m/n).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    return pmt.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
-	//sem R$
-	//return (m/n).toLocaleString('pt-br', {minimumFractionDigits: 2});
+    //sem R$
+    //return pmt.toLocaleString('pt-br', {minimumFractionDigits: 2});
 }
 
 function montante(p, n, iof, seguroPrestamista){
@@ -40,21 +40,20 @@ function montante(p, n, iof, seguroPrestamista){
     if ( Number.isNaN(p) )
     	p=0;
         
-    var m = p * (1 + (i * n));
-
-	/*
-    Onde: 
-	j = juros
-	p = principal (capital)
-	i = taxa de juros
-	n = número de períodos    
+    var pmt = p * ( (i * pow((1+i),n)) / (pow ((1+i),n) - 1) );
+    /*
+    Onde:
+    pmt = prestacao,
+    p  = valor financiado
+    i   = taxa mensal / 100
+    n    = numero de meses
     */
-   
+	
     //com R$
-	return m.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    return (pmt*n).toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
 
-	//sem R$
-	//return (m/n).toLocaleString('pt-br', {minimumFractionDigits: 2});
+    //sem R$
+    //return (pmt*n).toLocaleString('pt-br', {minimumFractionDigits: 2});
 }
 
 $(document).ready(function(){
